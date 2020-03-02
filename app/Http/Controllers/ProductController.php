@@ -14,6 +14,14 @@ class ProductController extends Controller
     {
         $this->user = $user;
         $this->request = $request;
+
+        //$this->middleware('auth');
+        /*
+        $this->middleware('auth')->only([
+            'create', 'store'
+            ]);
+        */
+        $this->middleware('auth')->except('index');
     }
     
     public function index()
