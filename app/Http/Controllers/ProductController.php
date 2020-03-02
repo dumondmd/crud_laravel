@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    protected $request, $user;
+
+    public function __construct(Request $request, User $user)
+    {
+        $this->user = $user;
+        $this->request = $request;
+    }
     
     public function index()
     {
