@@ -1,5 +1,62 @@
 <?php
 
+Route::get('/login', function () {
+    return 'Login';
+})->name('login');
+
+
+
+Route::middleware([])->group( function () {
+   
+   
+   Route::prefix('admin')->group(function () {
+
+    Route::namespace('Admin')->group(function () {
+    
+        Route::get('/dashboard', 'TesteController@teste')->name('admin.dashboard');
+                
+        Route::get('/financeiro', 'TesteController@teste')->name('admin.financeiro');
+        
+        Route::get('/produtos', 'TesteController@teste')->name('admin.products');
+
+        Route::get('/', 'TesteController@teste')->name('admin.home');
+    });
+    
+
+   });
+       
+});
+
+
+
+
+
+
+Route::get('/redirect3', function () {
+    return redirect()->route('url.name');
+});
+
+Route::get('/nome-url', function () {
+    return 'Hey Hey, Hey';
+})->name('url.name');
+
+Route::get('/', function () {
+    return view('welcome');    
+});
+
+Route::view('/view', 'welcome');
+
+Route::redirect('/redirect1', '/redirect2');
+
+/*
+Route::get('redirect1', function () {
+    return redirect('/redirect2');
+});
+*/
+Route::get('redirect2', function () {
+    return "Redirect02";
+});
+
 
 Route::get('/produtos/{idProduct?}', function ($idProduct = '') {
     return "Produtos(s) {$idProduct}";
