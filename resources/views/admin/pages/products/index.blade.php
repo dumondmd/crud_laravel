@@ -6,6 +6,20 @@
 
 @section('content')
     <h1>Exibindo os produtos</h1> 
+    <a href="{{route('products.create')}}">Cadastrar</a>
+<hr>
+
+    @component('admin.components.card')
+        @slot('title')
+            <h1>Título Card</h1>
+        @endslot
+        Um card de exemplo
+    @endcomponent
+    
+    
+    <hr>
+
+    @include('admin.includes.alerts', ['content' => 'Alerta de preço de produtos'])
 
     @if(isset($products))
         @foreach ($products as $product)        
@@ -68,8 +82,16 @@
 @endsection
 
 
-<style>
-    .last {
-        background-color: #ccc;
-    }
-</style>
+@push('styles')
+    <style>
+        .last {
+            background-color: #ccc;
+        }
+    </style>
+@endpush
+
+@push('scripts')
+    <script>
+        document.body.style.background = '#efefef'
+    </script>
+@endpush
