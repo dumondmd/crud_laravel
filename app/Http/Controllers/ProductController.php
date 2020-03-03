@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -40,8 +41,18 @@ class ProductController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(StoreUpdateProductRequest $request)
     {
+        dd('OK');
+        /*
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'description' => 'nullable|min:3|max:10000',
+            'photo' => 'required|image',
+        ]);
+        */
+        
+
         //dd($request->only(['name', 'description']));
         //dd($request->all());
         //dd($request->only(['name', 'description']));
