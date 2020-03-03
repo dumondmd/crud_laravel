@@ -42,7 +42,12 @@ class ProductController extends Controller
     
     public function store(Request $request)
     {
-        dd('Cadastrando...');
+        //dd($request->only(['name', 'description']));
+        //dd($request->all());
+        //dd($request->only(['name', 'description']));
+        //dd($request->has('teste'));
+        //dd($request->input('name', 'Campo que não existe valor default'));
+        dd($request->except('_token'));
     }
 
     
