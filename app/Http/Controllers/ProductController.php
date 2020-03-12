@@ -11,9 +11,11 @@ class ProductController extends Controller
 {
 
     protected $request, $user;
+    private $repository;
 
-    public function __construct(Request $request, User $user)
+    public function __construct(Request $request, User $user, Product $product)
     {
+        $this->repository = $product;
         $this->user = $user;
         $this->request = $request;
 
@@ -46,7 +48,7 @@ class ProductController extends Controller
     {
         $data = $request->only('name', 'description', 'price');
         
-        Product::create($data);
+        $this->repository->create($data);
 
         return redirect()->route('products.index');
         
@@ -59,7 +61,7 @@ class ProductController extends Controller
         //$product = Product::where('id', $id)->first();
         
 
-        if(!$product = Product::find($id))
+        if(!$product = $this->repository->find($id))
             return redirect()->back();
 
         return view('admin.pages.products.show', [
@@ -82,6 +84,12 @@ class ProductController extends Controller
    
     public function destroy($id)
     {
-        //
+        
+        if(!$product = $this->repository->find($id))
+        return redirect()->back();
+
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }
