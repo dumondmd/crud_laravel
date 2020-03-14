@@ -78,8 +78,15 @@ class ProductController extends Controller
         return view('admin.pages.products.edit', compact('product'));
     }
 
-    
-    public function update(Request $request, $id)
+    /***
+     * Update the specified resource in storage.
+     * 
+     * @param \App\Http\Requests\StoreUpdateProductRequest $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     * 
+     */
+    public function update(StoreUpdateProductRequest $request, $id)
     {
         if(!$product = $this->repository->find($id))
             return redirect()->back();
