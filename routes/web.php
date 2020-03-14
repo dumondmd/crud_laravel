@@ -18,6 +18,13 @@ Route::get('/login', function () {
 })->name('login');
 
 
+
+
+
+Route::get('/', function () {
+    return redirect()->route('products.index');
+});
+
 /*
 Route::middleware([])->group( function () {
    
@@ -49,6 +56,7 @@ Route::middleware([])->group( function () {
        
 });
 */
+/*
 Route::group([
     'middleware' => [],
     'prefix' => 'admin',
@@ -64,15 +72,14 @@ Route::group([
     //Route::get('/', 'TesteController@teste')->name('home');
 
     Route::get('/', function () {
-        return redirect()->route('admin.dashboard');
+       //return redirect()->route('admin.dashboard');
+        return redirect()->route('products.index');
     })->name('home');
 });
 
+*/
 
-
-
-
-
+/*
 Route::get('/redirect3', function () {
     return redirect()->route('url.name');
 });
@@ -89,11 +96,7 @@ Route::view('/view', 'welcome');
 
 Route::redirect('/redirect1', '/redirect2');
 
-/*
-Route::get('redirect1', function () {
-    return redirect('/redirect2');
-});
-*/
+
 Route::get('redirect2', function () {
     return "Redirect02";
 });
@@ -138,3 +141,4 @@ Route::get('/', function () {
 });
 
 
+*/
