@@ -6,6 +6,9 @@
 
 @section('content')
     <h1>Exibindo os produtos</h1> 
+    <hr>
+    <a href="http://127.0.0.1:8000/api/dogs"><button type="" class="btn btn-info">API DOG</button></a>
+    <hr>
     <a href="{{route('products.create')}}" class="btn btn-primary">Cadastrar</a>
 
     <hr>
