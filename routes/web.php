@@ -1,6 +1,6 @@
 <?php
 
-
+Route::any('products/search', 'ProductController@search')->name('products.search');
 Route::resource('products', 'ProductController');
 /*
 Route::delete('products/{id}', 'ProductController@destroy')->name('product.destroy');
